@@ -4,12 +4,6 @@ var cardValue = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 var card = [cardSuit, cardValue];
 var cardDeck = [][cardSuit, cardValue], [cardSuit, cardValue], [cardSuit, cardValue], [cardSuit, cardValue], [cardSuit, cardValue]];
 
-// sort cardValue in ascending order - will sort numbers but won't sort letters
-cardValue.sort(function(a,b) {
-  return a - b;
-});
-
-
 class PokerHand {
   constructor(suit,value) {
     this.cardSuit = suit;
@@ -35,7 +29,7 @@ class PokerHand {
       then return "Two Pair";
     } else if (/* cardValue * 2 are the same*/) {
       then return "One Pair";
-    } else return "High Card: " + cardValue.sort();
+    } else return "High Card: " + cardValue.sort().reverse([i]);
   }
 }
 
