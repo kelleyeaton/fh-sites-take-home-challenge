@@ -1,43 +1,40 @@
-
-var cardSuit = ["s", "d", "h", "c"];
-var cardValue = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
-var card = [cardSuit, cardValue];
-var cardDeck = [][cardSuit, cardValue], [cardSuit, cardValue], [cardSuit, cardValue], [cardSuit, cardValue], [cardSuit, cardValue]];
-
-// sort cardValue in ascending order - will sort numbers but won't sort letters
-cardValue.sort(function(a,b) {
-  return a - b;
-});
-
-
 class PokerHand {
-  constructor(suit,value) {
-    this.cardSuit = suit;
-    this.cardValue = value;
+  constructor(hand) {
+    this.hand = hand;
   }
 
   getRank() {
-    if (cardSuit == cardSuit == cardSuit == cardSuit == cardSuit) && (cardValue == "A") {
-      then  return "Royal Flush";
-    } else if (cardSuit /* if all suits are the same */) && (/* cardValue are in chronological order */) {
-      then return "Straight Flush";
-    } else if (cardSuit /* if all suits are the same */) {
-      then return "Flush";
-    } else if (/* cardValue * 4 are the same*/) {
-      then return "Four of a Kind";
-    } else if (/* cardValue * 2 are the same*/) && (/* cardValue * 3 are the same*/) {
-      then return "Full House";
-    } else if (/* cardValue are in chronological order */) {
-      then return "Straight";
-    } else if (/* cardValue * 3 are the same*/) {
-      then return "Three of a Kind";
-    } else if (/* cardValue * 2 are the same*/) && (/* cardValue * 2 are the same*/) {
-      then return "Two Pair";
-    } else if (/* cardValue * 2 are the same*/) {
-      then return "One Pair";
-    } else return "High Card: " + cardValue.sort();
+    var cards = this.hand.split(' ');         // ['As', 'Ks', 'Qs', 'Js', '10s']
+    var cardObjects = [];
+    // Loop through each card in the array
+    for (var i = 0; i < cards.length; i++) {
+      var value = parseInt(cards[i]);
+      var card = {};
+      // Does the card string contain a number?
+      if (Number.isInteger(value)) {
+        card.rank = value;
+      }
+      else {
+        card.rank = cards[i][0];
+      }
+      // now get the suit
+      var suit = cards[i].charAt(cards[i].length - 1);
+      card.suit = suit;
+      cardObjects.push(card);
+    }
+    console.log(cardObjects);
+    // console.log(cardObjects[1].rank); to get individual ranks
+    // compare ranks and suits
+    // find all suits
+    for (var c = 0; c < cardObjects.length; c++) {
+      var cardSuits = [];
+      cardSuits.push(cardObjects[c].suit);
+    }
   }
 }
+    // determine if all suits are equal (Flush)
+    // find all ranks
+    // determine if ranks are A, K, Q, J, 10 for Royal Flush
+
 
 module.exports = PokerHand;
-
